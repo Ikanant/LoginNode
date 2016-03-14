@@ -1,3 +1,3 @@
-var nav = [{Link:'Books', Text:'Books'}, {Link: 'Authors', Text: 'Authors'}];
+var nav = [{Link:'/', Text:'Home'}, {Link: 'Account', Text: 'Account'}];
 
 module.exports = nav;

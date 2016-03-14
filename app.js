@@ -5,8 +5,7 @@ var session = require('express-session');
 var app = express();
 
 var nav = require('./src/config/navigationBar');
-var bookRouter = require('./src/routes/bookRoutes')(nav);
-var adminRouter = require('./src/routes/adminRoutes')();
+var userRouter = require('./src/routes/userRoutes')(nav);
 var authRouter = require('./src/routes/authRoutes')();
 
 var port = process.env.PORT || 5000;
@@ -22,12 +21,11 @@ require('./src/config/passport')(app);
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
-app.use('/Books', bookRouter);
-app.use('/Admin', adminRouter);
+app.use('/User', userRouter);
 app.use('/Auth', authRouter);
 
 app.get('/', function(req, res){
-    res.render('index', {title: 'ACME Financials', nav: [{Link:'Account', Text:'Account'}]});
+    res.render('index', {title: 'ACME Financials', nav: nav});
 });
 
 app.listen(port, function(err){

@@ -2,8 +2,8 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 const low = require('lowdb');
-const storage = require('lowdb/file-sync')
-const db = low('src/data/users.json', { storage })
+const storage = require('lowdb/file-sync');
+const db = low('src/data/users.json', {storage});
 
 module.exports = function () {
     passport.use(new LocalStrategy({
@@ -11,9 +11,13 @@ module.exports = function () {
             passwordField: 'password'
         },
         function (username, password, done) {
-            console.log('+' + username);
-            console.log('++' + password);
-            console.log(db('').size());
+            var foundUser = db('users').find({email: username});
+            if(foundUser != null && foundUser.password === password){
+                done(null, foundUser);
+            }
+            else {
+                done(null, false, {message: 'User not found'});
+            }
         }
     ));
 };
