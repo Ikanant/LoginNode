@@ -56,7 +56,7 @@ var router = function(nav){
                     .chain()
                     .find({_id: req.user._id})
                     .assign({company: company, email: email, phone: phone,
-                    address: address, age: age, eyeColor: eyeColor, password: password}) // or .defaults depending on what you want to do
+                    address: address, age: age, eyeColor: eyeColor, password: password})
                     .value();
 
                 req.user.company = company;

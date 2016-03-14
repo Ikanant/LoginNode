@@ -24,6 +24,7 @@ app.set('view engine', 'ejs');
 app.use('/User', userRouter);
 app.use('/Auth', authRouter);
 
+
 app.get('/', function(req, res){
     res.render('index', {title: 'ACME Financials', nav: {Link:'User', Text:'Account'}});
 });
@@ -31,6 +32,7 @@ app.get('/Logout', function(req, res){
     req.logout();
     res.redirect('/');
 });
+
 
 app.listen(port, function(err){
    console.log('Running server on port: ' + port);
