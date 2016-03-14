@@ -7,7 +7,7 @@ var userRoute = function () {
         .post(passport.authenticate('local', {
             failureRedirect: '/'
         }), function (req, res) {
-            res.redirect('/User/' + req.user._id);
+            res.redirect('/User');
         });
 
     return authRouter;
