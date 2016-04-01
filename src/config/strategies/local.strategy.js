@@ -3,7 +3,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 const low = require('lowdb');
 const storage = require('lowdb/file-sync');
-const db = low('src/data/users.json', {storage});
+const db = low('src/data/users.json', {storage: storage});
 
 module.exports = function () {
     passport.use(new LocalStrategy({

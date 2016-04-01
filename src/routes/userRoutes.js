@@ -2,7 +2,7 @@ var express = require('express');
 
 const low = require('lowdb');
 const storage = require('lowdb/file-sync');
-const db = low('src/data/users.json', {storage});
+const db = low('src/data/users.json', {storage: storage});
 
 var userRouter = express.Router();
 
@@ -53,7 +53,6 @@ var router = function(nav){
                 var password = req.body.password;
 
                 db('users')
-                    .chain()
                     .find({_id: req.user._id})
                     .assign({company: company, email: email, phone: phone,
                     address: address, age: age, eyeColor: eyeColor, password: password})
