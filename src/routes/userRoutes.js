@@ -53,6 +53,7 @@ var router = function(nav){
                 var password = req.body.password;
 
                 db('users')
+                    .chain()
                     .find({_id: req.user._id})
                     .assign({company: company, email: email, phone: phone,
                     address: address, age: age, eyeColor: eyeColor, password: password})
