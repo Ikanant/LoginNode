@@ -1,8 +1,6 @@
 var express = require('express');
 
-const low = require('lowdb');
-const storage = require('lowdb/file-sync');
-const db = low('src/data/users.json', {storage: storage});
+var mongodb = require('mongodb').MongoClient;
 
 var userRouter = express.Router();
 
