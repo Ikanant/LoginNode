@@ -14,9 +14,8 @@ module.exports = function () {
                 var collection = db.collection('accounts');
 
                 collection.findOne(
-                      {"name.first": "Ruby"},
+                      {email: username},
                       function (err, results) {
-                        console.log(results);
                         if (results != null && results.password === password) {
                             var user = results;
                             done(null, user);
@@ -25,16 +24,6 @@ module.exports = function () {
                             done(null, false, {message: 'Bad Password'});
                         }
                 });
-
-
-
-                // var foundUser = db('users').find({email: username});
-                // if(foundUser != null && foundUser.password === password){
-                //     done(null, foundUser);
-                // }
-                // else {
-                //     done(null, false, {message: 'User not found'});
-                // }
             })
         }
     ));
